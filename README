@@ -1,0 +1,20 @@
+smartLock
+
+SmartLock consist of a set of C++ classes which help to
+synchronize a block of code. Due to scope within C++ and
+the way destructors are called SmartLock-classes reduce the
+locking/unlocking overhead
+
+USAGE:
+see examples.cc
+
+SmartLock:
+SmartLock takes an initialized pthread_mutex_t as parameter
+and acquires the given lock. It will throw an exception if
+an internal error occured or the mutex is not initialized.
+It will unlock the mutex as soon as the destructor is called.
+
+
+SmartRDLock / SmartWRLock:
+Operates on pthread_rwlock_t instead of pthread_mutex_t.
+SmartRDLock locks for reading and SmartWRLock for writing.
